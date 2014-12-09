@@ -11,7 +11,7 @@ There are three parts in this program.
 
 ### Dependancies 
 
-To get started, you will need to install [suitesparse](http://faculty.cse.tamu.edu/davis/suitesparse.html). You can use [homebrew](http://brew.sh/) to install it in your Mac
+To get started, you will need to install [suitesparse](http://faculty.cse.tamu.edu/davis/suitesparse.html). You can use [homebrew](http://brew.sh/) to install it in your Mac. You also need to build ST_IO and ST_TO_CC library in your search path.
 
     brew install suitesparse
 
