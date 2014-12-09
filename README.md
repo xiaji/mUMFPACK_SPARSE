@@ -1,6 +1,3 @@
-mUMFPACK_SPARSE
-===============
-
 # mUMFPACK Sparse Matrix Solver Example (Fortran 2003)
 
 The mUMFPACK module provides a Fortran-2003 implementation of the full UMFPACK interface.
