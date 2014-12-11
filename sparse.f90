@@ -31,10 +31,10 @@ PROGRAM MAIN
   DATA values / 2.0, 3.0, 0.0, 0.0, 0.0, 3.0, 0.0, -1.0, 0.0, 4.0, 0.0, 4.0, -3.0, 1.0, 2.0, &
     0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 6.0, 0.0, 0.0, 1.0 /
   REAL(KIND = 8) :: b(nst) = [8.0, 45.0, -3.0, 3.0, 19.0], x(nst) = 0.0
-  CHARACTER(len = 20) :: output_filename = "out.st"
-  CHARACTER(len = 255) filename_acc
-  CHARACTER(len = 255) filename_ccc
-  CHARACTER(len = 255) filename_icc
+  CHARACTER(LEN = 20) :: output_filename = "out.st"
+  CHARACTER(LEN = 255) filename_acc
+  CHARACTER(LEN = 255) filename_ccc
+  CHARACTER(LEN = 255) filename_icc
   INTEGER :: fileidout = 20
   
   ! matrix triplets with allocatable components
@@ -44,8 +44,8 @@ PROGRAM MAIN
   filename_icc = 'test_icc.txt'
 
   OPEN(file = output_filename, unit = fileidout, status = 'replace', iostat = OK)
-  DO j = 1, nst
-    DO i = 1, nst
+  DO i = 1, nst
+    DO j = 1, nst
       IF(values(i,j) /= 0.0) THEN
         WRITE(fileidout,'(2I5,F10.2)') i, j, values(i,j)
       END IF      
@@ -82,7 +82,7 @@ PROGRAM MAIN
   ALLOCATE(icc(1:ncc)) ! icc stores the row index of nonzeros
   ALLOCATE(ccc(1:n+1)) ! n is the size of matrix columns and ccc stores column information
 
-  call st_to_cc_index(naa, ist, jst, ncc, n, icc, ccc)
+  CALL st_to_cc_index(naa, ist, jst, ncc, n, icc, ccc)
 !
 ! Create the CC values.
 !
@@ -97,9 +97,9 @@ PROGRAM MAIN
 !
 ! Write the CC matrix.
 !
-  call i4vec_write ( filename_icc, ncc, icc )
-  call i4vec_write ( filename_ccc, n + 1, ccc )
-  call r8vec_write ( filename_acc, ncc, acc )
+  CALL i4vec_write (filename_icc, ncc, icc)
+  CALL i4vec_write (filename_ccc, n + 1, ccc)
+  CALL r8vec_write (filename_acc, ncc, acc)
 ! CSC format
   PRINT '(a)',"High-level Fortran operator (.umfpack.), CSC allocatable operands"
 
